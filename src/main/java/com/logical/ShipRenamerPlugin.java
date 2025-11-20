@@ -45,7 +45,7 @@ public class ShipRenamerPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("ShipRenamer started!");
+		log.debug("ShipRenamer started!");
 
 		trueNames = new String[5];
 
@@ -194,7 +194,7 @@ public class ShipRenamerPlugin extends Plugin
 				return;
 		}
 
-		log.info(String.format("[%s][%s][%s]", vbit1, vbit2, vbit3));
+		log.debug(String.format("[%s][%s][%s]", vbit1, vbit2, vbit3));
 
 		int opt = vbit1 == 0 ? DBTableID.SailingBoatNameOptions.COL_DEFAULT : DBTableID.SailingBoatNameOptions.COL_OPTION;
 		int num = vbit1 == 0 ? 0 : vbit1 - 1;
@@ -229,13 +229,13 @@ public class ShipRenamerPlugin extends Plugin
 			return; // Safety check shouldn't happen.
 		}
 
-		log.info(String.format("Recording ship: [%s]", total));
+		log.debug(String.format("Recording ship: [%s]", total));
 		trueNames[boatnum - 1] = total;
 	}
 
 	private void setSailingPanel()
 	{
-		log.info("Setting panel");
+		log.debug("Setting panel");
 		int boatId = client.getVarbitValue(VarbitID.SAILING_BOAT_SPAWNED);
 		String boardedName = getName(boatId);
 
@@ -248,7 +248,7 @@ public class ShipRenamerPlugin extends Plugin
 		if (child.getText().equals("Not on boat"))
 			return;
 
-		log.info(String.format("id: [%s], name: [%s], panel:[%s]", boatId, boardedName, child.getText())); 
+		log.debug(String.format("id: [%s], name: [%s], panel:[%s]", boatId, boardedName, child.getText())); 
 		child.setText(boardedName);
 
 	}
@@ -299,7 +299,7 @@ public class ShipRenamerPlugin extends Plugin
 
 	private void setCargoHold()
 	{
-		log.info("Setting panel");
+		log.debug("Setting panel");
 
 		Widget frame = client.getWidget(InterfaceID.SailingBoatCargohold.FRAME);
 		for (Widget child : frame.getChildren()) {
