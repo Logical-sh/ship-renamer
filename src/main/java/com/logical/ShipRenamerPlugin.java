@@ -274,7 +274,9 @@ public class ShipRenamerPlugin extends Plugin
 						child.setText(getName(i + 1));
 						break;
 					}
-					if (existing.endsWith(trueNames[i])) {
+					if (existing.length() > 4 &&
+						existing.substring(1, 4).equals(" - ") &&
+						existing.endsWith(trueNames[i])) {
 						child.setText(existing.substring(0, 4) + getName(i + 1));
 						break;
 					}
